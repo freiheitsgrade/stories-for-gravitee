@@ -1,0 +1,263 @@
+= Collection of User Stories for Adding Support for Asciidoctor
+
+== Update of a file of any type via REST
+
+*As* automator, +
+*I* would like to be able to update any file, already uploaded to Gravitee, +
+*so* that I am able to update all files, which are required to show the Asciidoc based documentation to the reader.
+
+=== Acceaptance Criteria
+* Updating a file does not break existing Asciidoc based documentation in Gravitee, that means all existing links or other kind of references must not be changed
+* In case of a successful operation, the REST backend of Gravity returns a JSON document with metadata on the operation, e.g. name of the file uploaded, deleted or updated.
+* In case of an error, the REST backend of Gravitee returns an useful error message in the format of RFC 7807
+
+[discrete]
+=== Definition Automator
+An automator is a person who automates all processes related to the publishing of documents, written in the Asciidoc format,  and related content.
+
+== Upload one file of any type via REST
+
+*As* automator, +
+*I* would like to be able to upload any type of file, +
+*so* that I am able to upload all files, which are required to show the Asciidoc based documentation to the reader.
+
+=== Acceptance Criteria
+* It must be possible to upload a file to a specific folder an Gravitee
+* In case of a successful operation, the REST backend of Gravity returns a JSON document with metadata on the operation, e.g. name of the file uploaded, deleted or updated.
+* In case of an error, the REST backend of Gravitee returns an useful error message in the format of RFC 7807
+* The file uploaded must be referenceable by any other Asciidoc document (e.g. via the link or include directive) via its relative path from the referencing Asciidoc document.
+
+[discrete]
+=== Definition Automator
+An automator is a person who automates all processes related to the publishing of documents, written in the Asciidoc format,  and related content.
+
+[discrete]
+=== Definition Reader
+A person who is reading documents publish in the Gravitee portal.
+
+== Delete one file of any type via REST
+
+*As* automator, +
+*I* would like to be able to delete any file via the REST interface of Gravitee, +
+*so* that can automate the process of deleting files and documents.
+
+=== Acceptance Criteria
+* Deleting a non-existing document is considered as successful operation.
+* In case of a successful operation, the REST backend of Gravity returns a JSON document with metadata on the operation, e.g. name of the file uploaded, deleted or updated.
+* In case of an error, the REST backend of Gravitee returns an useful error message in the format of RFC 7807
+
+[discrete]
+=== Automator
+An automator is a person who automates all processes related to the publishing of documents, written in the Asciidoc format,  and related content.
+
+== Author documents outside of Gravitee and upload them later via REST
+
+*As* writer, +
+*I* would like to be able to upload Asciidoc based documents, which consists of multiple single Asciidoc documents, images and other content to Gravitee, +
+*so* that I can easily publish any kind of Asciidoctor based documentation on Gravitee.
+
+=== Acceptance Criteria
+* The document to upload can consist of multiple files of different formats
+* To upload and display it to a reader, no changes to the documents must be applied
+* If the files used to build the document is separated over different folders, then the folder structure is kept.
+* In case of an error, preventing the writer to successful finish the operation he intended to do, he gets a useful error message, he can use to report the problem he is facing.
+* In case of an error, the REST backend of Gravitee returns an useful error message in the format of RFC 7807
+
+=== Notes
+* This is an meta story, which can be realized by implementing other stories
+
+[discrete]
+=== Definition Writer
+A writer is a person who authors documents with any kind of content using the Asciidoc format.
+
+[discrete]
+=== Reader
+A person who is reading documents publish in the Gravitee portal.
+
+==  Support creation of diagrams via Asciidoctor Diagram
+
+*As* writer, +
+*I* would like to be able use all features of Asciidoctor Diagram, +
+*so* that I can create diagrams for my Asciidoctor based documentation.
+
+=== Acceptance Criteria
+
+_Noting special ;-)_
+
+[discrete]
+=== Definition Writer
+A writer is a person who authors documents with any kind of content using the Asciidoc format.
+
+== Get overview of existing files with filter via REST
+
+*As* automator, +
+*I* would like to be able to retrieve a overview of existing file uploaded via REST or generated in the frontend, +
+*so* that I am able to use this information in my automated workflows.
+
+=== Acceptance Criteria
+* The returned document should also honor/show a given folder structure
+* The entry point for the overview can be either the root folder or any subfolder
+* It shall be possible to get a recursive overview or a flat one
+
+
+=== Notes
+* This requirement can be seen as a ls for the content of the portal in Gravitee
+
+[discrete]
+=== Definition Automator
+An automator is a person who automates all processes related to the publishing of documents, written in the Asciidoc format,  and related content.
+
+== Delete one file of any type via the frontend
+
+*As* writer, +
+*I* would like to be able to deleted files, +
+*so* that I can removed outdated or not any longer needed files from Gravitee.
+
+=== Acceptance Criteria
+* In case of an error, preventing the writer to successful finish the operation he intended to do, he gets a useful error message, he can use to report the problem he is facing.
+
+[discrete]
+=== Definition Writer
+A writer is a person who authors documents with any kind of content using the Asciidoc format.
+
+== Provide Preview of a choosen Asciidoc document in the frontend
+
+*As* writer, *
+*I* would like to have a preview of the rendered document without saving my changes, *
+*so* that I can see, how the document will be shown to the reader.
+
+=== Acceptance Criteria
+* In case of an error, preventing the writer to successful finish the operation he intended to do, he gets a useful error message, he can use to report the problem he is facing.
+
+
+[discrete]
+=== Definition Writer
+A writer is a person who authors documents with any kind of content using the Asciidoc format.
+
+[discrete]
+=== Definition Reader
+A person who is reading documents publish in the Gravitee portal.
+
+== Render ToC for the displayed Asciidoc document
+
+*As* reader, +
+*I* would like to see a table of contents, representing the structure of the rendered document, +
+*so* that I am able to use the navigation to jump between different locations in the document and to find for me relevant content easily.
+
+=== Acceptance Criteria
+* The maximal depth of the table of contents shall be configurable by the writer of the document by the setting the properties used by Asciidoctor to configure the generated of the table of contents.
+
+[discrete]
+=== Definition Reader
+A person who is reading documents publish in the Gravitee portal.
+
+[discrete]
+=== Definition Writer
+A writer is a person who authors documents with any kind of content using the Asciidoc format.
+
+== Support links to other Asciidoc documents
+
+*As* writer,
+*I* would like to be able to link from one Asciidoc document to second Asciidoc document,
+*so* that the document, shown to the reader contains a link, which leads to the rendered version of the second document.
+
+
+=== Acceptance Criteria
+* There shall be a possibility to prohibit the usage of resources from untrusted locations outside of the organization during rendering time of the resulting document.
+
+[discrete]
+=== Definition Writer
+A writer is a person who authors documents with any kind of content using the Asciidoc format.
+
+[discrete]
+=== Definition Reader
+A person who is reading documents publish in the Gravitee portal.
+
+== Upload one file of any type via the frontend
+
+*As* writer, +
+*I* would like to be able to upload any kind of file (Asciidoc document, source code file, image, …), +
+*so* that I can use them to generate Asciidoc based documentation.
+
+=== Acceptance Criteria
+* In case of an error, preventing the writer to successful finish the operation he intended to do, he gets a useful error message, he can use to report the problem he is facing.
+
+[discrete]
+=== Definition Writer
+A writer is a person who authors documents with any kind of content using the Asciidoc format.
+
+
+== Support the include directive of Asciidoc
+
+*As* writer, +
+*I* would like to be able to use the include directive of Asciidoc to include portions from other files in the resulting document, +
+*so* that can split my Asciidoc documents in multiple files or reference parts from other files like source code files.
+
+=== Acceptance Criteria
+* There shall be a possibility to prohibit the usage of resources from untrusted locations outside of the organization during rendering time of the resulting document.
+
+[discrete]
+=== Definition Writer
+A writer is a person who authors documents with any kind of content using the Asciidoc format.
+
+== Support the image directive of Asciidoc
+
+*As* writer,
+*I* would like to be able to use the image directive of Asciidoc to include images in the resulting document,
+*so* that can use images in my documentation.
+
+=== Acceptance Criteria
+* There shall be a possibility to prohibit the usage of resources from untrusted locations outside of the organization during rendering time of the resulting document.
+
+[discrete]
+=== Definition Writer
+A writer is a person who authors documents with any kind of content using the Asciidoc format.
+
+== Edit on Asciidoc file in the Frontend
+
+*As* writer, +
+*I* would like to edit an existing file, +
+*so* that can either fix issues in documents shown in the portal or write totally new content.
+
+=== Acceptance Criteria
+* Any type of file should be editable
+* If the used editor does not support the file type, it should tread each other files as plain text format, if the file is not a binary format like an image file.
+* In case of an error, preventing the writer to successful finish the operation he intended to do, he gets a useful error message, he can use to report the problem he is facing.
+
+[discrete]
+=== Definition Writer
+A writer is a person who authors documents with any kind of content using the Asciidoc format.
+
+
+== Create on Asciidoc file in the Frontend
+
+*As* writer, +
+*I* would like to be able to create a new Asciidoc file in the frontend, +
+*so* that can easily create new documents in the Asciidoc format to the portal of Gravitee.
+
+=== Acceptance Criteria
+* In case of an error, preventing the writer to successful finish the operation he intended to do, he gets a useful error message, he can use to report the problem he is facing.
+
+
+[discrete]
+=== Definition Writer
+A writer is a person who authors documents with any kind of content using the Asciidoc format.
+
+== Allow to support a custom CSS document to render a Asciidoc based document
+
+*As* writer, +
+*I* would like to be able to specify a custom style sheet to be used by the rendered documents, +
+*so* that can take control on the the ways how content is shown to the reader.
+
+=== Acceptance Criteria
+* To specify the custom CSS document can be done by setting the property used by Asciidoctor for this purpose.
+* There shall be a possibility to prohibit the usage of resources from untrusted locations outside of the organization during rendering time of the resulting document.
+
+[discrete]
+=== Definition Writer
+A writer is a person who authors documents with any kind of content using the Asciidoc format.
+
+[discrete]
+=== Definition Reader
+A person who is reading documents publish in the Gravitee portal.
+
